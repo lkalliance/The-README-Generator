@@ -15,7 +15,8 @@ const questions = [
     { message: "What are the CREDITS for this application?", name: "test", type: "input" },
     { message: "What is your GITHUB USERNAME?", name: "username", type: "input" },
     { message: "What is your EMAIL ADDRESS?", name: "email", type: "input" },
-    { message: "Under what LICENSE is this application published?", name: "license", type: "list", choices: ["MIT", "Apache", "BSD", "GNU", "none"] }
+    { message: "Under what LICENSE is this application published?", name: "license", type: "list", choices: ["Apache", "FreeBSD", "Revised BSD", "GPL", "Library GPL", "MIT", "Mozilla", "Creative Commons", "Eclipse", "none"] },
+    { message: "What is the NAME to put on the copyright notice?", name: "copyright", thpe: "input" }
 ];
 
 // TODO: Create a function to write README file
