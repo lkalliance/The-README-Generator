@@ -1,3 +1,5 @@
+const licenses = require("./licenses.js");
+
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 
@@ -13,7 +15,6 @@ function renderLicenseSection(license) {}
 // TODO: Create a function to generate markdown for README
 
 
-
 const headers = {
   description: "Description",
   installation: "Installation Instructions",
@@ -23,8 +24,11 @@ const headers = {
   test: "Test Instructions",
   username: "GitHub Username",
   email: "Developer Email",
-  license: "Software License"
+  license: "Software License",
+  copyright: "Copyright"
 }
+
+const today = new Date;
 
 
 
@@ -47,8 +51,10 @@ function createText(data) {
   for ( [section, response] of Object.entries(data) ) {
 
       if ( section=="title" ) {
-          builtText += `${renderTitle(response, data.license)}`
-      } else if ( response ) builtText += `${renderSection({ title: section, content: response })}`
+        builtText += renderTitle(response, data.license)
+      } else if ( section=="license" ) {
+        builtText += renderLicense(response, data.copyright)
+      } else if ( response && section != "email" && section != "copyright" ) builtText += `${renderSection({ title: section, content: response })}`
 
       if (section=="description") builtText += `${renderTOC(data)}`
   }
@@ -57,7 +63,7 @@ function createText(data) {
 
 
 function renderTitle(data, license) {
-  return `# ${data} ${renderLicenseBadge(license)}
+  return `# ${data} ${licenses.data[license].badge}
 
 `;
 }
@@ -92,16 +98,14 @@ function renderTOC(data) {
 `;
 }
 
-function renderLicenseBadge(license) {
+function renderLicense(license, party) {
+  return `## Software License
 
-  const badges = {
-    MIT: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
-    Apache: "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
-    BSD: "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)",
-    GNU: "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
-  }
-  return (license == "none") ? "" : `${badges[license]}`;
+This software is covered by a [${licenses.data[license].name}](${licenses.data[license].link}).
+
+©${today.getFullYear()}, ${party}
+
+${licenses.data[license].text}`
 }
-
 
 module.exports = { createText };
