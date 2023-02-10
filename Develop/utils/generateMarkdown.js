@@ -63,49 +63,27 @@ function createText(data) {
 
 
 function renderTitle(data, license) {
-  return `# ${data} ${licenses.data[license].badge}
-
-`;
+  return `# ${data} ${licenses.data[license].badge}\n\n`;
 }
 
 function renderSection(data) {
-  return `## ${headers[data.title]}
-  
-${data.content.replaceAll("PPP ", "PPP").replaceAll("BBB ", "BBB").replaceAll("PPP",`
-
-`).replaceAll("BBB", `
-* `)}
-  
-`;
+  return `## ${headers[data.title]}\n\n${data.content.replaceAll("PPP ", "PPP").replaceAll("BBB ", "BBB").replaceAll("PPP",`\n\n`).replaceAll("BBB", `\n* `)}\n\n`;
 }
 
 function renderTOC(data) {
-  let ToC = `## Table of Contents
-  
-`;
+  let ToC = `## Table of Contents\n\n`;
 
   for ( [section, response] of Object.entries(data) ) {
-    if ( section != "title" && section != "description" && section != "github" && section != "email" ) {
-      ToC += 
-`* [${headers[section]}](#${headers[section].toLowerCase().replaceAll(" ", "-")})
-`
+    if ( section != "title" && section != "description" && section != "github" && section != "email" && response) {
+      ToC += `\n* [${headers[section]}](#${headers[section].toLowerCase().replaceAll(" ", "-")})\n`
     }
-
   }
 
-  return `${ToC}
-
-`;
+  return `${ToC}\n\n`;
 }
 
 function renderLicense(license, party) {
-  return `## Software License
-
-This software is covered by a [${licenses.data[license].name}](${licenses.data[license].link}).
-
-©${today.getFullYear()}, ${party}
-
-${licenses.data[license].text}`
+  return `## Software License\n\nThis software is covered by a [${licenses.data[license].name}](${licenses.data[license].link}).\n\n©${today.getFullYear()}, ${party}\n\n${licenses.data[license].text}`
 }
 
 module.exports = { createText };
