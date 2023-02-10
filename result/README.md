@@ -1,59 +1,16 @@
-# d [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
-## Description
-
-d
+#  [![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)](https://opensource.org/licenses/EPL-1.0)
 
 ## Table of Contents
 
 
-* [Installation Instructions](#installation-instructions)
-
-* [Usage Information](#usage-information)
-
-* [Application Features](#application-features)
-
-* [Contribution Guidelines](#contribution-guidelines)
-
-* [Test Instructions](#test-instructions)
-
-* [GitHub Username](#github-username)
-
 * [Software License](#software-license)
 
-* [Copyright](#copyright)
-
-
-## Installation Instructions
-
-d
-
-## Usage Information
-
-d
-
-## Application Features
-
-d
-
-## Contribution Guidelines
-
-d
-
-## Test Instructions
-
-d
-
-## GitHub Username
-
-d
 
 ## Software License
 
-This software is covered by a [Apache License 2.0](https://opensource.org/licenses/Apache-2.0).
+©2023
 
-©2023, d
+This software is covered by an [Eclipse Public License v2.0](https://opensource.org/licenses/EPL-1.0).
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).
-   
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC LICENSE (“AGREEMENT”). ANY USE, REPRODUCTION OR DISTRIBUTION OF THE PROGRAM CONSTITUTES RECIPIENT'S ACCEPTANCE OF THIS AGREEMENT.
+

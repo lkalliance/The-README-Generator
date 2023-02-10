@@ -15,34 +15,21 @@ const questions = [
     { message: "What are the CREDITS for this application?", name: "test", type: "input" },
     { message: "What is your GITHUB USERNAME?", name: "username", type: "input" },
     { message: "What is your EMAIL ADDRESS?", name: "email", type: "input" },
-    { message: "Under what LICENSE is this application published?", name: "license", type: "list", choices: ["Apache", "FreeBSD", "Revised BSD", "GPL", "Library GPL", "MIT", "Mozilla", "Creative Commons", "Eclipse", "none"] },
+    { message: "Under what LICENSE is this application published?", name: "license", type: "list", choices: ["none", "Apache", "FreeBSD", "Revised BSD", "GPL", "Library GPL", "MIT", "Mozilla", "Creative Commons", "Eclipse"] },
     { message: "What is the NAME to put on the copyright notice?", name: "copyright", thpe: "input" }
 ];
 
-// TODO: Create a function to write README file
 
-// to create a new file: fs.writeFile('path', content, err=>etc.)
-// to append to an existing file: fs.appendFile('path', content, err=>etc.)
+init();
 
 
 
-// TODO: Create a function to initialize app
 function init() {
-    console.log(`
-\x1b[33mWelcome to the README generator.
-Respond to any or all questions below
-to generate a new README file.
+    console.log(`\n\x1b[33mWelcome to the README generator.\nRespond to any or all questions below\nto generate a new README file.\n\nTo create a new paragraph, insert "PPP".\nTo create a bullet point, preface with\n"BBB" for each, and insert "PPP" to\nreturn to regular text.\n`);
 
-To create a new paragraph, insert "PPP".
-To create a bullet point, preface with
-"BBB" for each, and insert "PPP" to
-return to regular text.
-`)
     askQs(questions);
 }
 
-// Function call to initialize app
-init();
 
 function askQs(qs) {
     inquirer.prompt(
