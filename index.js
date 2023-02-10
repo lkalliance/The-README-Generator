@@ -57,7 +57,7 @@ function askQs(qs) {
 
 function writeToFile(data) {
     // This function takes the accumulated data and writes the README
-    fs.writeFile('./README.md', generate.createText(data), (err) => {
+    fs.writeFile('./result/README.md', generate.createText(data), (err) => {
         if (err) console.log(err)
     });
 }
