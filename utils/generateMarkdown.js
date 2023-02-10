@@ -58,6 +58,8 @@ function createText(data) {
 
       if (section=="description") builtText += `${renderTOC(data)}`
   }
+  
+  if (data.email != "" || data.username != "") builtText += renderContact(data.username, data.email);
   return builtText;
 }
 
@@ -74,16 +76,36 @@ function renderTOC(data) {
   let ToC = `## Table of Contents\n\n`;
 
   for ( [section, response] of Object.entries(data) ) {
-    if ( section != "title" && section != "description" && section != "github" && section != "email" && response) {
+    if ( section != "title" && section != "description" && section != "username" && section != "email" && response) {
       ToC += `\n* [${headers[section]}](#${headers[section].toLowerCase().replaceAll(" ", "-")})\n`
     }
   }
+
+  if (data.email || data.username) ToC += `\n* [Contact the Developer](#contact-the-developer)`;
 
   return `${ToC}\n\n`;
 }
 
 function renderLicense(license, party) {
-  return `## Software License\n\nThis software is covered by a [${licenses.data[license].name}](${licenses.data[license].link}).\n\n©${today.getFullYear()}, ${party}\n\n${licenses.data[license].text}`
+  let licenseText = `## Software License\n\n©${today.getFullYear()}`;
+  if (party) licenseText += `, ${party}`;
+  if (license != "none") licenseText += `\n\nThis software is covered by a${ (startsWithVowel(licenses.data[license].name)) ? `n` : `` } [${licenses.data[license].name}](${licenses.data[license].link}).\n\n${licenses.data[license].text}\n\n`
+  return licenseText;
+}
+
+function renderContact(github="", email="") {
+  console.log(github);
+  console.log(email);
+  let contact = `## Contact the Developer\n\n`;
+  if (email) contact += `Contact me at <a href="mailto:${email}">${email}</a>${(github) ? `, or ` : `.`}`
+  if (github) contact += `${(email) ? `visit` : `Visit`} my [GitHub profile](https://www.github.com/${github}).`
+  return contact;
+}
+
+function startsWithVowel(str) {
+  const first = str.substring(0,1);
+  const vowels = "AEIOU";
+  return ( vowels.includes(first) );
 }
 
 module.exports = { createText };
