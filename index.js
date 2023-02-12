@@ -12,7 +12,7 @@ const questions = [
     { message: "What are some of this application's FEATURES?", name: "features", type: "input" },
     { message: "What is this application's CONTRIBUTION GUIDELINES?", name: "contributions", type: "input" },
     { message: "What is this application's TEST INSTRUCTIONS?", name: "test", type: "input" },
-    { message: "What are the CREDITS for this application?", name: "test", type: "input" },
+    { message: "What are the CREDITS for this application?", name: "credits", type: "input" },
     { message: "What is your GITHUB USERNAME?", name: "username", type: "input" },
     { message: "What is your EMAIL ADDRESS?", name: "email", type: "input" },
     { message: "Under what LICENSE is this application published?", name: "license", type: "list", choices: ["none", "Apache", "FreeBSD", "Revised BSD", "GPL", "Library GPL", "MIT", "Mozilla", "Creative Commons", "Eclipse"] },
@@ -25,7 +25,7 @@ init();
 
 
 function init() {
-    console.log(`\n\x1b[33mWelcome to the README generator.\nRespond to any or all questions below\nto generate a new README file.\n\nTo create a new paragraph, insert "PPP".\nTo create a bullet point, preface with\n"BBB" for each, and insert "PPP" to\nreturn to regular text.\n`);
+    console.log(`\n\x1b[33mWelcome to the README generator.\n\nRespond to any or all questions below\nto generate a new README file.\n\nTo create a new paragraph, insert "PPP".\nTo create a bullet point, preface with\n"BBB" for each, and insert "PPP" to\nreturn to regular text.\n\n`);
 
     askQs(questions);
 }
@@ -47,4 +47,20 @@ function writeToFile(data) {
     fs.writeFile('./result/README.md', generate.createText(data), (err) => {
         if (err) console.log(err)
     });
+
+    cleanup();
+}
+
+function cleanup() {
+    let count = 1;
+    const finishUp = setInterval( () => {
+        let text = "";
+        for ( let i = 0; i < count; i++ ) text += ".";
+        console.log(text);
+        count++;
+        if ( count == 5 ) {
+            console.log(`\nDone!\n`);
+            clearInterval(finishUp);
+        }
+    }, 750);
 }

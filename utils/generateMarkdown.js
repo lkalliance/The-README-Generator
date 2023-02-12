@@ -22,6 +22,7 @@ const headers = {
   features: "Application Features",
   contributions: "Contribution Guidelines",
   test: "Test Instructions",
+  credits: "Credits",
   username: "GitHub Username",
   email: "Developer Email",
   license: "Software License",
@@ -77,7 +78,7 @@ function renderTOC(data) {
 
   for ( [section, response] of Object.entries(data) ) {
     if ( section != "title" && section != "description" && section != "username" && section != "email" && response) {
-      ToC += `\n* [${headers[section]}](#${headers[section].toLowerCase().replaceAll(" ", "-")})\n`
+      ToC += `\n* [${headers[section]}](#${headers[section].toLowerCase().replaceAll(" ", "-")})`
     }
   }
 
@@ -94,8 +95,6 @@ function renderLicense(license, party) {
 }
 
 function renderContact(github="", email="") {
-  console.log(github);
-  console.log(email);
   let contact = `## Contact the Developer\n\n`;
   if (email) contact += `Contact me at <a href="mailto:${email}">${email}</a>${(github) ? `, or ` : `.`}`
   if (github) contact += `${(email) ? `visit` : `Visit`} my [GitHub profile](https://www.github.com/${github}).`
