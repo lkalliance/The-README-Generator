@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// Packages to include in this application.
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generate = require('./utils/generateMarkdown.js');
 
-// TODO: Create an array of questions for user input
+// The questions that the user will be prompted with
 const questions = [
     { message: "What is this application's TITLE?", name: "title", type: "input" },
     { message: "What is this application's DESCRIPTION?", name: "description", type: "input" },
@@ -25,6 +25,7 @@ init();
 
 
 function init() {
+    // Show the user the instructions
     console.log(`\n\x1b[33mWelcome to the README generator.\n\nRespond to any or all questions below\nto generate a new README file.\n\nTo create a new paragraph, insert "PPP".\nTo create a bullet point, preface with\n"BBB" for each, and insert "PPP" to\nreturn to regular text.\n\n`);
 
     askQs(questions);
@@ -32,18 +33,18 @@ function init() {
 
 
 function askQs(qs) {
+    // Ask the questions
     inquirer.prompt(
         qs
     )
     .then( (response, err) => {
        if (err) console.log(err)
        else writeToFile(response);
-       //writeToFile(generate.createText(response))
     })
 }
 
 function writeToFile(data) {
-    // This function takes the accumulated data and writes the README
+    // This function sends the data to the generate module, and writes the return to the file.
     fs.writeFile('./result/README.md', generate.createText(data), (err) => {
         if (err) console.log(err)
     });
@@ -52,6 +53,7 @@ function writeToFile(data) {
 }
 
 function cleanup() {
+    // Let's have a little fun!
     let count = 1;
     const finishUp = setInterval( () => {
         let text = "";
