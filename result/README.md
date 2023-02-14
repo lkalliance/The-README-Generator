@@ -2,7 +2,9 @@
 
 ## Description
 
-This CLI application prompts the user for various pieces of input, and uses that input to output a formatted README file.
+The README Generator is a CLI application that accepts input from the user by way of screen prompts, and generates a README file with that content.
+
+This application will be incredibly useful because you have NO IDEA how much time I spend crafting README files.
 
 
 ## Table of Contents
@@ -17,40 +19,40 @@ This CLI application prompts the user for various pieces of input, and uses that
 
 ## Installation Instructions
 
-This application requires the installation of Node.js, as well as the Inquirer module. The version of Node that this application was developed and tested on is 18.13.0, and the version of Inquirer is 6.3.1.
+The README Generator is a Node.js application. It requires the presence of Node.js (it was developed and tested on version 18.13.0), and also the installation (either globally or locally) of the Inquirer module, available via npm.
 
-In addition, there are two javascript modules that should be present in the "/utils/" directory.
+There are two additional JavaScript modules that come with the application, which should be placed in a "/utils/" directory below the main file, "index.js".
 
 
 ## Usage Information
 
-The user launches The README Generator with the "node index.js" command from within the installation directory. They are first presented with a choice between two editing types for long-form entries: either to type responses directly into their terminal prompt, or to do so in their terminal's default editor (usually vim or something similar).
+The user launches the application with the command "node index.js" while in the main directory. The README Generator will first ask the user what interface they would like to use for long-form entry, such as this one I'm typing right now. The user chooses from a numbered list: either type directly into the CLI interface, or to use his default text editor (which is what I am doing right now).
 
-Upon answering that prompt, they are then walked through a variety of questions that the application will use to construct the README. Some of them, such as "Title" and "GitHub username", are done simply on the command line, while others (like this section here I am typing right now) will be entered either at the command line or in the default editor, based on the user's selection.
+Once they have made their choice, the application presents them with a variety of prompts, each of which the user can answer. Each prompt is optional: the README file output at the end does not require all fields to be answered.
 
-If the user has chosen to enter text directly on the command line, then they still have the option to enter paragraph breaks or bullet points with the insertion of the indicated wildcard strings.
+The last prompt is for the license to apply to the application. The user will have a list to choose from, by way of the arrow keys on their keyboard.
 
-Finally, the user may (optionally) choose a license type to utilize, from a generated list.
-
-After all prompts have (optionally) been answered, the application will generate the README file, in Markdown format, and place it in the "/result/" directory.
+Once all the prompts have been answered, The README Generator...generates a README, in Markdown format, and places it in the "/result/" directory.
 
 
 ## Application Features
 
-The application includes these features:
+The README Generator has several features intended to make the process as convenient as possible:
 
-* Automatic generation of the README from user input
-* Option to enter long-form text either on the command line or in a text editor
-* Automatic inclusion of both a license badge and the text of the selected license in its own section
-* Automatic generation of a Table of Contents
-* Creation of a "Contact the Developer" section if the user provides either a GitHub username and/or email address.
+* Automatic generation of the README file
+* List-based selection of the appropriate software license
+* A choice of interface for long-form answers: either the user's default text editor, or direct input onto the command line. With the latter, the user has the option of inserting paragraph breaks and bullets using indicated wildcards.
+* Automatic generation of a license section, that includes a summary text of the license, a link to more information, and a badge placed in the headline with another link to the license
+* Automatic creation of a Table of Contents, placed after the software's Description
+* Automatic creation of a "Questions?" section, with links to the developer's email address and GitHub profile, if the user provides them
+
 
 
 ## Credits
 
-The code for The README Generator was compiled by Lee Klusky, but with the outstanding guidance of the instructional staff of the University of Minnesota Full Stack Coding Bootcamp.
+The code for The README Generator is all original, written by the developer Lee Klusky. But it does rest on the foundation of Node.js and on the Inquirer module.
 
-Further guidance was provided by the accumulated wisdom of coders around the Web, particularly from [Mozilla Developer Network](https://developer.mozilla.org), [Stack Overflow](https://www.stackoverflow.com), and [W3Schools](https://w3schools.com).
+This application is also made possible through the guidance of the instructor staff of the University of Minnesota Full Stack Coding Bootcamp, and with the assorted wisdom of coders from around the Web, most notably at [Stack Overflow](https://stackoverflow.com), [W3Schools](https://w3schools.com), and the [Mozilla Develper Network](https://developer.mozilla.org).
 
 
 ## Software License
