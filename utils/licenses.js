@@ -1,3 +1,4 @@
+// Container for all of the license data
 const data = {
     Apache: {
       name: "Apache License 2.0",

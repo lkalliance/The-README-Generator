@@ -1,4 +1,4 @@
-// Require the licenes data
+// Require the license data
 const licenses = require("./licenses.js");
 
 // A reference to convert a response name with a section header
@@ -45,14 +45,24 @@ function createText(data) {
 
 
 function renderTitle(data, license) {
+  // This function renders the main title
+  // parameter "data" is the text of the header
+  // parameter "license" is an object with various license bits
+
   return `# ${data} ${licenses.data[license].badge}\n\n`;
 }
 
 function renderSection(data) {
+  // This function renders most of the sections
+  // parameter "data" is the data for the current section
+
   return `## ${headers[data.title]}\n\n${data.content.replaceAll("PPP ", "PPP").replaceAll("BBB ", "BBB").replaceAll("PPP",`\n\n`).replaceAll("BBB", `\n* `)}\n\n`;
 }
 
 function renderTOC(data) {
+  // This function creates a Table of Contents
+  // parameter "data" is the collection of all user responses
+
   let ToC = `## Table of Contents\n\n`;
 
   // iterate over user responses
@@ -69,7 +79,11 @@ function renderTOC(data) {
 }
 
 function renderLicense(license, party) {
+  // This function renders the license section
   // We will always return SOMETHING, even if all that is is a copyright and year.
+  // parameter "license" is the selected license
+  // paraemter "party" is the user-provided name to put in the copyright
+
   let licenseText = `## Software License\n\n©${today.getFullYear()}`;
   if (party) licenseText += `, ${party}`;
   if (license != "none") licenseText += `\n\nThis software is covered by a${ (startsWithVowel(licenses.data[license].name)) ? `n` : `` } [${licenses.data[license].name}](${licenses.data[license].link}).\n\n${licenses.data[license].text}\n\n`
@@ -77,6 +91,10 @@ function renderLicense(license, party) {
 }
 
 function renderContact(github="", email="") {
+  // This function renders the contact information, if the user gave any
+  // parameter "github" is the github username
+  // parameter "email" is the user's email address
+
   let contact = `## Contact the Developer\n\n`;
   if (email) contact += `Contact me at <a href="mailto:${email}">${email}</a>${(github) ? `, or ` : `.`}`
   if (github) contact += `${(email) ? `visit` : `Visit`} my [GitHub profile](https://www.github.com/${github}).`
@@ -84,7 +102,8 @@ function renderContact(github="", email="") {
 }
 
 function startsWithVowel(str) {
-  // this utility is for deciding to put "a" or "an" 
+  // This utility is for deciding to put "a" or "an" 
+  
   const first = str.substring(0,1);
   const vowels = "AEIOU";
   return ( vowels.includes(first) );
