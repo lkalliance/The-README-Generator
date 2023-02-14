@@ -4,14 +4,13 @@
 
 This CLI application prompts the user for various pieces of input, and uses that input to output a formatted README file.
 
+
 ## Table of Contents
 
 
 * [Installation Instructions](#installation-instructions)
 * [Usage Information](#usage-information)
 * [Application Features](#application-features)
-* [Contribution Guidelines](#contribution-guidelines)
-* [Test Instructions](#test-instructions)
 * [Credits](#credits)
 * [Software License](#software-license)
 * [Contact the Developer](#contact-the-developer)
@@ -47,4 +46,25 @@ The application includes these features:
 * Creation of a "Contact the Developer" section if the user provides either a GitHub username and/or email address.
 
 
-Contact me at <a href="mailto:(enter your email address)">(enter your email address)</a>, or visit my [GitHub profile](https://www.github.com/(enter your gitHub username)).
+## Credits
+
+The code for The README Generator was compiled by Lee Klusky, but with the outstanding guidance of the instructional staff of the University of Minnesota Full Stack Coding Bootcamp.
+
+Further guidance was provided by the accumulated wisdom of coders around the Web, particularly from [Mozilla Developer Network](https://developer.mozilla.org), [Stack Overflow](https://www.stackoverflow.com), and [W3Schools](https://w3schools.com).
+
+
+## Software License
+
+©2023, Lee Klusky
+
+This software is covered by a [MIT License](https://opensource.org/licenses/MIT).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Contact the Developer
+
+Contact me at <a href="mailto:lkbootcamp@yahoo.com">lkbootcamp@yahoo.com</a>, or visit my [GitHub profile](https://www.github.com/lkalliance).
