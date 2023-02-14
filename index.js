@@ -3,21 +3,6 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const generate = require('./utils/generateMarkdown.js');
 
-// The questions that the user will be prompted with
-const questions = [
-    { message: "What is this application's TITLE?", name: "title", type: "input" },
-    { message: "What is this application's DESCRIPTION?", name: "description", type: "input" },
-    { message: "What is this application's INSTALLATION INSTRUCTIONS?", name: "installation", type: "input" },
-    { message: "What is this application's USAGE INFORMATION?", name: "usage", type: "input" },
-    { message: "What are some of this application's FEATURES?", name: "features", type: "input" },
-    { message: "What is this application's CONTRIBUTION GUIDELINES?", name: "contributions", type: "input" },
-    { message: "What is this application's TEST INSTRUCTIONS?", name: "test", type: "input" },
-    { message: "What are the CREDITS for this application?", name: "credits", type: "input" },
-    { message: "What is your GITHUB USERNAME?", name: "username", type: "input" },
-    { message: "What is your EMAIL ADDRESS?", name: "email", type: "input" },
-    { message: "Under what LICENSE is this application published?", name: "license", type: "list", choices: ["none", "Apache", "FreeBSD", "Revised BSD", "GPL", "Library GPL", "MIT", "Mozilla", "Creative Commons", "Eclipse"] },
-    { message: "What is the NAME to put on the copyright notice?", name: "copyright", thpe: "input" }
-];
 
 
 init();
@@ -25,14 +10,59 @@ init();
 
 
 function init() {
-    // Show the user the instructions
-    console.log(`\n\x1b[33mWelcome to the README generator.\n\nRespond to any or all questions below\nto generate a new README file.\n\nTo create a new paragraph, insert "PPP".\nTo create a bullet point, preface with\n"BBB" for each, and insert "PPP" to\nreturn to regular text.\n\n`);
+    console.clear();
+    console.log(`\n\x1b[33mWelcome to the README generator.`)
 
-    askQs(questions);
+    let editor = "input";
+
+    // first ask the user for their text editor preference
+    howToEdit()
+    .then( (response, err) => {
+        if (err) console.log(err);
+        else {
+            if ( response.editor.indexOf("default") >= 0 ) editor = "editor"
+            askQs(generateQuestions(editor), editor);
+        }
+    })
 }
 
+function howToEdit() {
+    // usage instructions
+    console.log(`\n\x1b[33mBefore we begin, please indicate what method\nyou'd like to use for the potentially longer responses:\nwould you prefer to type right into the terminal,\nor use your terminal's default text editor?\n`)
 
-function askQs(qs) {
+    return inquirer.prompt({
+        message: "Please make your selection:",
+        name: "editor",
+        type: "rawlist",
+        choices: ["Enter text at the terminal prompt", "Use my terminal's default editor"]
+    })
+}
+
+function generateQuestions(type) {
+    const questions = [
+        { message: "What is this application's TITLE?", name: "title", type: "input" },
+        { message: "What is this application's DESCRIPTION?", name: "description", type: type },
+        { message: "What is this application's INSTALLATION INSTRUCTIONS?", name: "installation", type: "input" },
+        { message: "What is this application's USAGE INFORMATION?", name: "usage", type: "input" },
+        { message: "What are some of this application's FEATURES?", name: "features", type: "input" },
+        { message: "What is this application's CONTRIBUTION GUIDELINES?", name: "contributions", type: "input" },
+        { message: "What is this application's TEST INSTRUCTIONS?", name: "test", type: "input" },
+        { message: "What are the CREDITS for this application?", name: "credits", type: "input" },
+        { message: "What is your GITHUB USERNAME?", name: "username", type: "input" },
+        { message: "What is your EMAIL ADDRESS?", name: "email", type: "input" },
+        { message: "What is the NAME to put on the copyright notice?", name: "copyright", thpe: "input" },
+        { message: "Under what LICENSE is this application published?", name: "license", type: "list", choices: ["none", "Apache", "FreeBSD", "Revised BSD", "GPL", "Library GPL", "MIT", "Mozilla", "Creative Commons", "Eclipse"] }
+    ]; 
+
+    return questions;
+}
+
+function askQs(qs, type) {
+    // usage instructions
+    console.log(`\n\x1b[33mRespond to any or all questions below\nto generate a new README file.\n`)
+    if (type == "input") console.log(`\x1b[33mTo create a new paragraph, insert "PPP".\nTo create a bullet point, preface with\n"BBB" for each, and insert "PPP" to\nreturn to regular text.\n`)
+    else console.log(`\x1b[33mTraditionally long-form entries will be\ndone in your terminal's default editor.\n`)
+
     // Ask the questions
     inquirer.prompt(
         qs
@@ -54,14 +84,15 @@ function writeToFile(data) {
 
 function cleanup() {
     // Let's have a little fun!
+    console.log(`\n\x1b[33mgenerating...`)
     let count = 1;
     const finishUp = setInterval( () => {
         let text = "";
         for ( let i = 0; i < count; i++ ) text += ".";
-        console.log(text);
+        console.log(`\x1b[33m${text}`);
         count++;
         if ( count == 5 ) {
-            console.log(`\nDone!\n`);
+            console.log(`\n\x1b[33mDONE!\n\nYour README is located in '/result/'.\n`);
             clearInterval(finishUp);
         }
     }, 750);
