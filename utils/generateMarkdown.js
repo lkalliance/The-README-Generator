@@ -95,7 +95,7 @@ function renderContact(github="", email="") {
   // parameter "github" is the github username
   // parameter "email" is the user's email address
 
-  let contact = `## Contact the Developer\n\n`;
+  let contact = `## Questions?\n\n`;
   if (email) contact += `Contact me at <a href="mailto:${email}">${email}</a>${(github) ? `, or ` : `.`}`
   if (github) contact += `${(email) ? `visit` : `Visit`} my [GitHub profile](https://www.github.com/${github}).`
   return contact;
