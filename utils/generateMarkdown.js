@@ -1,20 +1,7 @@
+// Require the licenes data
 const licenses = require("./licenses.js");
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
-
-
+// A reference to convert a response name with a section header
 const headers = {
   description: "Description",
   installation: "Installation Instructions",
@@ -22,25 +9,16 @@ const headers = {
   features: "Application Features",
   contributions: "Contribution Guidelines",
   test: "Test Instructions",
+  credits: "Credits",
   username: "GitHub Username",
   email: "Developer Email",
   license: "Software License",
   copyright: "Copyright"
 }
 
+// For use with the copyright
 const today = new Date;
 
-
-
-
-function writeToFile(data) {
-  // This function takes the returned data and creates the text for the README
-  // parameter "data" is the user's responses to the questions
-  
-  fs.writeFile('./README.md', text, (err) => {
-      if (err) console.log(err)
-  });
-}
 
 function createText(data) {
   // This function manages the accumulation of text for the README
@@ -49,16 +27,18 @@ function createText(data) {
   let builtText = '';
   // iterate over the responses
   for ( [section, response] of Object.entries(data) ) {
-
+      // send to the right renderer based on what section
       if ( section=="title" ) {
         builtText += renderTitle(response, data.license)
       } else if ( section=="license" ) {
         builtText += renderLicense(response, data.copyright)
-      } else if ( response && section != "email" && section != "copyright" ) builtText += `${renderSection({ title: section, content: response })}`
+      } else if ( response && section != "email" && section != "copyright" && section != "username" ) builtText += `${renderSection({ title: section, content: response })}`
 
+      // if we just did the Description, follow with the ToC
       if (section=="description") builtText += `${renderTOC(data)}`
   }
   
+  // if the user provided either an email address or GitHub username, do a Contact section
   if (data.email != "" || data.username != "") builtText += renderContact(data.username, data.email);
   return builtText;
 }
@@ -75,18 +55,21 @@ function renderSection(data) {
 function renderTOC(data) {
   let ToC = `## Table of Contents\n\n`;
 
+  // iterate over user responses
   for ( [section, response] of Object.entries(data) ) {
-    if ( section != "title" && section != "description" && section != "username" && section != "email" && response) {
-      ToC += `\n* [${headers[section]}](#${headers[section].toLowerCase().replaceAll(" ", "-")})\n`
+    // outside of selected user responses, if there is anything there create a link to it
+    if ( section != "title" && section != "description" && section != "username" && section != "email" && response ) {
+      ToC += `\n* [${headers[section]}](#${headers[section].toLowerCase().replaceAll(" ", "-")})`
     }
   }
-
+  // if there's either an email or a GitHub username, then there will be a contact section
   if (data.email || data.username) ToC += `\n* [Contact the Developer](#contact-the-developer)`;
 
   return `${ToC}\n\n`;
 }
 
 function renderLicense(license, party) {
+  // We will always return SOMETHING, even if all that is is a copyright and year.
   let licenseText = `## Software License\n\n©${today.getFullYear()}`;
   if (party) licenseText += `, ${party}`;
   if (license != "none") licenseText += `\n\nThis software is covered by a${ (startsWithVowel(licenses.data[license].name)) ? `n` : `` } [${licenses.data[license].name}](${licenses.data[license].link}).\n\n${licenses.data[license].text}\n\n`
@@ -94,8 +77,6 @@ function renderLicense(license, party) {
 }
 
 function renderContact(github="", email="") {
-  console.log(github);
-  console.log(email);
   let contact = `## Contact the Developer\n\n`;
   if (email) contact += `Contact me at <a href="mailto:${email}">${email}</a>${(github) ? `, or ` : `.`}`
   if (github) contact += `${(email) ? `visit` : `Visit`} my [GitHub profile](https://www.github.com/${github}).`
@@ -103,6 +84,7 @@ function renderContact(github="", email="") {
 }
 
 function startsWithVowel(str) {
+  // this utility is for deciding to put "a" or "an" 
   const first = str.substring(0,1);
   const vowels = "AEIOU";
   return ( vowels.includes(first) );
