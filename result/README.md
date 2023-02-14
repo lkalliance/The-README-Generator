@@ -1,9 +1,8 @@
-# This is the title [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# (enter title here) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Description
 
-This is the description
-
+(enter description here)
 
 ## Table of Contents
 
@@ -11,6 +10,8 @@ This is the description
 * [Installation Instructions](#installation-instructions)
 * [Usage Information](#usage-information)
 * [Application Features](#application-features)
+* [Contribution Guidelines](#contribution-guidelines)
+* [Test Instructions](#test-instructions)
 * [Credits](#credits)
 * [Copyright](#copyright)
 * [Software License](#software-license)
@@ -18,32 +19,38 @@ This is the description
 
 ## Installation Instructions
 
-These are the installation instructions.
-
+(enter installation instructions here)
 
 ## Usage Information
 
-This is the usage information.
-
+(enter usage instructions here)
 
 ## Application Features
 
-These are the features.
+(enter features here)
 
+## Contribution Guidelines
+
+(enter contribution guidelines here)
+
+## Test Instructions
+
+(enter test instructions here)
 
 ## Credits
 
-These are the credits
-
+(enter credits here)
 
 ## Software License
 
-©2023, Lee Klusky
+©2023, (enter copyright name)
 
-This software is covered by a [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0).
+This software is covered by an [Apache License 2.0](https://opensource.org/licenses/Apache-2.0).
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. See [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/).
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 ## Contact the Developer
 
-Contact me at <a href="mailto:lkbootcamp@yahoo.com">lkbootcamp@yahoo.com</a>, or visit my [GitHub profile](https://www.github.com/lkalliance).
+Contact me at <a href="mailto:(enter your email address)">(enter your email address)</a>, or visit my [GitHub profile](https://www.github.com/(enter your gitHub username)).
