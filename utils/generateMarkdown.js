@@ -67,8 +67,9 @@ function renderTOC(data) {
 
   // iterate over user responses
   for ( [section, response] of Object.entries(data) ) {
+    console.log(section);
     // outside of selected user responses, if there is anything there create a link to it
-    if ( section != "title" && section != "description" && section != "username" && section != "email" && response ) {
+    if ( section != "title" && section != "description" && section != "username" && section != "email" && section != "copyright" && response ) {
       ToC += `\n* [${headers[section]}](#${headers[section].toLowerCase().replaceAll(" ", "-")})`
     }
   }
