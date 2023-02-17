@@ -36,6 +36,8 @@ The last prompt is for the license to apply to the application. The user will ha
 
 Once all the prompts have been answered, The README Generator...generates a README, in Markdown format, and places it in the "/result/" directory.
 
+Here is a [video walkthrough](https://drive.google.com/file/d/10RjSCnHM0BE9X3L68O6PxvDBGDuliybS/view?usp=sharing) of the application.
+
 
 ## Application Features
 
